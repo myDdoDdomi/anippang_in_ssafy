@@ -8,7 +8,6 @@ from threading import Thread
 
 HOST = '127.0.0.1'  # 호스트
 PORT = 1111        # 포트
-person_num = 3 # 게임 인원
 display_width = 912
 display_height = 768
 client_sockets = []
@@ -16,6 +15,8 @@ tri_ready = 0
 final_tri = 0
 point_dict = {}
 BLACK = (0,0,0)
+
+
 
 class ready_neko:
     def __init__(self) -> None:
@@ -33,6 +34,8 @@ class ready_neko:
             pygame.image.load("./img/neko6.png"),
             pygame.image.load("./img/neko_niku.png")
         ]
+        
+
 
         self.bg = pygame.image.load("./img/neko_bg.png")
         self.ranking_bg = pygame.image.load("./img/neko_ranking_bg.png")
@@ -135,6 +138,16 @@ def handle_client(client_socket, _):
 
 
 def main():
+    pygame.init()
+    yaong = [
+        pygame.mixer.Sound("./bgm/server/yaong_1.mp3"),
+        pygame.mixer.Sound("./bgm/server/yaong_2.mp3"),
+        pygame.mixer.Sound("./bgm/server/yaong_3.mp3"),
+        pygame.mixer.Sound("./bgm/server/yaong_4.mp3"),
+        pygame.mixer.Sound("./bgm/server/yaong_5.mp3"),
+        pygame.mixer.Sound("./bgm/server/yaong_6.mp3"),
+        pygame.mixer.Sound("./bgm/server/yaong_7.mp3"),
+        ]
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
         server_socket.bind((HOST, PORT))
         server_socket.listen()
@@ -144,6 +157,7 @@ def main():
         a.game_start()
         while True:
             client_socket, _ = server_socket.accept()
+            yaong[random.choice(range(7))].play()
             client_sockets.append(client_socket)
             print("Client connected")
             print("참가자 수 : ", len(client_sockets))

@@ -216,7 +216,7 @@ def game():
     m = Mouse(cursor,map_x,map_y)
     idx = 0
     cnt = 0
-    tiover = 10
+    tiover = 60
     pygame.mixer.stop()
     while True:
         tmr += 1 # 매 시간 1초 증가

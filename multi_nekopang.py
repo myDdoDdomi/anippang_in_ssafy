@@ -10,7 +10,7 @@ pygame.init() # pygame 모듈 초기화
 
 HOST = '127.0.0.1'  # 호스트
 PORT = 1111        # 포트
-NAME = "최봉준"
+NAME = "최봉준" #이름을 입력해주세요
 
 
 WHITE = (255,255,255)
@@ -216,7 +216,7 @@ def game():
     m = Mouse(cursor,map_x,map_y)
     idx = 0
     cnt = 0
-    tiover = 10
+    tiover = 60
     pygame.mixer.stop()
     while True:
         tmr += 1 # 매 시간 1초 증가
