@@ -50,7 +50,6 @@ class ready_neko:
 
     def gameOn(self) :
         global tri_ready, point_fin, final_tri, point_dict
-        pygame.init()
         font_1 = pygame.font.SysFont("malgungothic",53)
         pygame.display.set_caption("애니팡 서버")  # 타이틀
         self.clock = pygame.time.Clock() #Clock 오브젝트 초기화
@@ -132,6 +131,7 @@ def handle_client(client_socket, _): # 클라이언트들 관리 함수
     point_dict[NAME] = int(point) # 딕셔너리 형태로 이름 각각에 담기
     point_fin = sorted(point_dict.items(), key=lambda x: x[1], reverse=True)  # value 값으로 내림차순 정렬하기
     point_fin = dict(point_fin) 
+    print(point_fin)
     final_tri = 1
         # else :
         #     tri_ready = 1
